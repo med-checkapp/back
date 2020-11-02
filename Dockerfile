@@ -5,7 +5,8 @@ ENV PORT=3000 \
 
 WORKDIR ${APP_DIR}
 
-RUN npm i -g @nestjs/cli
+RUN npm i -g @nestjs/cli && \
+    apk add --update chromium
 
 COPY package.json yarn.lock ./
 
