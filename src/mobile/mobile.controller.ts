@@ -26,8 +26,6 @@ export class MobileController {
         'ctl00_ContentPlaceHolder1_lbrs1',
     );
 
-    console.log("formSubmitter:", formSubmitter)
-
     try {
       const targetValue = await formSubmitter.evaluateQuery();
       return targetValue;

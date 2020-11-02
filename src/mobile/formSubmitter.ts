@@ -28,13 +28,17 @@ export class FormSubmitter {
 
     private async browserNewPage() {
         this.browser = await puppeteer.launch({
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ],
             headless: 'false' === process.env.DEBUG,
             executablePath: process.env.CHROMIUM_PATH,
         });
 
         this.page = await this.browser.newPage();
 
-        await this.page.goto(process.env.PAGE_URL!);
+        await this.page.goto(process.env.PAGE_URL!, { waitUntil: 'networkidle2' });
     }
 
     private async setQueryDataOnPage() {

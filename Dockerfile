@@ -6,9 +6,9 @@ ENV PORT=3000 \
 WORKDIR ${APP_DIR}
 
 RUN npm i -g @nestjs/cli && \
-    apk add --update chromium
+    apk add --update chromium nss freetype freetype-dev harfbuzz ca-certificates ttf-freefont
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 
 RUN yarn install
 
